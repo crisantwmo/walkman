@@ -1,0 +1,457 @@
+/* CONFIGURACIÓN GENERAL VECTORIAL */
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #d4e5ed; /* Celeste claro de fondo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+}
+
+.contenedor {
+    display: flex;
+    gap: 30px;
+    align-items: center;
+    position: relative;
+}
+
+/* EL WALKMAN (ESTILO CARTOON) */
+.reproductor {
+    width: 620px;
+    height: 360px;
+    background-color: #8a9597; /* Gris de la ilustración */
+    border: 6px solid #000000; /* Bordes negros gruesos */
+    border-radius: 40px;
+    box-shadow: 0 20px 0 rgba(0, 0, 0, 0.08);
+    position: relative;
+    padding: 15px;
+    box-sizing: border-box;
+}
+
+/* Brillo superior simulado en el chasis */
+.reproductor::before {
+    content: '';
+    position: absolute;
+    top: 6px;
+    left: 30px;
+    width: calc(100% - 60px);
+    height: 12px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 6px;
+}
+
+.borde-interno {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+}
+
+/* VENTANA DEL CASSETTE (LADO IZQUIERDO) */
+.seccion-ventana {
+    flex: 1.2;
+    height: 270px;
+    background-color: #1a1d20;
+    border: 5px solid #000;
+    border-radius: 20px;
+    overflow: hidden;
+    position: relative;
+}
+
+.cristal {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+/* Reflejos diagonales blancos de la ventana */
+.reflejo-cristal {
+    position: absolute;
+    width: 150%;
+    height: 100%;
+    background: linear-gradient(115deg, 
+        transparent 30%, 
+        rgba(255,255,255,0.2) 35%, 
+        rgba(255,255,255,0.2) 40%, 
+        transparent 40%, 
+        transparent 45%, 
+        rgba(255,255,255,0.2) 50%, 
+        rgba(255,255,255,0.2) 53%, 
+        transparent 53%
+    );
+    z-index: 3;
+    pointer-events: none;
+}
+
+/* EL CASSETTE */
+.cassette {
+    width: 270px;
+    height: 160px;
+    background-color: #ffffff;
+    border: 5px solid #000;
+    border-radius: 12px;
+    padding: 10px;
+    box-sizing: border-box;
+    position: relative;
+    z-index: 1;
+}
+
+.etiqueta-cassette {
+    width: 100%;
+    height: 100%;
+    border: 4px solid #000;
+    background-color: #fffdf0;
+    border-radius: 6px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lineas-decorativas {
+    height: 12px;
+    border-bottom: 3px solid #000;
+    background: repeating-linear-gradient(90deg, #000, #000 10px, transparent 10px, transparent 20px);
+    opacity: 0.2;
+}
+
+/* CARRETE / ENGRANAJES */
+.zona-carretes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 35px;
+    margin-top: 5px;
+}
+
+.carrete {
+    width: 44px;
+    height: 44px;
+    background-color: #000;
+    border-radius: 50%;
+    position: relative;
+    border: 4px solid #000;
+}
+
+/* Dientes internos estilo cartoon */
+.carrete::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 28px;
+    height: 28px;
+    background-color: #fff;
+    border-radius: 50%;
+    background: conic-gradient(
+        #fff 0deg 30deg, #000 30deg 60deg,
+        #fff 60deg 90deg, #000 90deg 120deg,
+        #fff 120deg 150deg, #000 150deg 180deg,
+        #fff 180deg 210deg, #000 210deg 240deg,
+        #fff 240deg 270deg, #000 270deg 300deg,
+        #fff 300deg 330deg, #000 330deg 360deg
+    );
+}
+
+.espacio-medio {
+    width: 35px;
+    height: 35px;
+    background-color: #1a1d20;
+    border: 4px solid #000;
+    border-radius: 4px;
+}
+
+.banda-roja {
+    height: 25px;
+    background-color: #e54127;
+    border-top: 4px solid #000;
+}
+
+/* ANIMACIÓN DE GIRO EN 2D */
+@keyframes girarCartoon {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+}
+
+.girando {
+    animation: girarCartoon 2.5s linear infinite;
+}
+
+/* SECCIÓN CONTROLES (LADO DERECHO) */
+.seccion-controles {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    justify-content: center;
+    position: relative;
+}
+
+/* BOTONES ESTILO VECTORIAL */
+.fila-botones-top, .fila-botones-bottom {
+    display: flex;
+    gap: 8px;
+}
+
+button {
+    background-color: #f07820; /* Naranja base para botones multimedia */
+    border: 4px solid #000;
+    border-radius: 14px;
+    color: #fff;
+    font-size: 22px;
+    cursor: pointer;
+    position: relative;
+    box-sizing: border-box;
+    box-shadow: 0 6px 0 #000; /* Sombra sólida plana */
+    transition: all 0.05s ease;
+}
+
+/* Brillo superior en los botones */
+button::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 15%;
+    width: 70%;
+    height: 5px;
+    background-color: rgba(255, 255, 255, 0.4);
+    border-radius: 3px;
+}
+
+/* BOTÓN POWER GRIS ORIGINAL (Mantiene siempre su color gris característico) */
+button.boton-power-gris {
+    background-color: #495054; /* El gris exacto de tu diseño */
+}
+
+.fila-botones-top button {
+    flex: 1;
+    height: 75px;
+}
+
+.fila-botones-bottom button {
+    flex: 1;
+    height: 60px;
+}
+
+.texto-btn {
+    font-weight: 900;
+    font-size: 14px;
+    letter-spacing: 1px;
+}
+
+/* Efecto de click puramente mecánico (Baja al presionarse y sube inmediatamente) */
+button:active {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #000;
+}
+
+/* Clase activa exclusiva para botones multimedia (como Play) si lo requieres */
+button.activo {
+    transform: translateY(4px);
+    box-shadow: 0 2px 0 #000;
+}
+
+/* DETALLES DECORATIVOS INFERIORES */
+.detalles-decorativos {
+    display: flex;
+    align-items: center;
+    padding: 5px 10px 0 10px;
+    position: relative;
+    height: 30px;
+}
+
+/* LUZ LED INDICADORA PLANA */
+#led-estado-power {
+    width: 20px;
+    height: 20px;
+    background-color: #bc3217; /* Rojo por defecto (Apagado) */
+    border: 4px solid #000;
+    border-radius: 50%;
+    transition: background-color 0.2s ease, box-shadow 0.2s ease;
+    position: absolute;
+    left: 20px; 
+    top: 5px;
+}
+
+/* Estado Encendido (Verde vibrante plano con un sutil halo externo) */
+#led-estado-power.led-verde {
+    background-color: #00ff66;
+    box-shadow: 0 0 10px #00ff66;
+}
+
+.switch-retro {
+    width: 65px;
+    height: 24px;
+    background-color: #555c5e;
+    border: 4px solid #000;
+    border-radius: 12px;
+    margin-left: auto;
+}
+
+.perilla-switch {
+    width: 25px;
+    height: 16px;
+    background-color: #f07820;
+    border: 3px solid #000;
+    border-radius: 6px;
+    position: absolute;
+    top: 7px;
+    right: 14px;
+}
+
+/* PANEL LATERAL DE PLAYLIST */
+.playlist-panel {
+    display: none; /* CORRECCIÓN: Arranca completamente oculto al cargar la página */
+    width: 260px;
+    background-color: #2c3539;
+    border: 5px solid #000;
+    border-radius: 24px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 10px 0 rgba(0,0,0,0.05);
+}
+
+.playlist-panel h2 {
+    margin-top: 0;
+    font-size: 18px;
+    text-transform: uppercase;
+    border-bottom: 4px solid #000;
+    padding-bottom: 10px;
+    color: #f07820;
+}
+
+.playlist-panel ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 200px;
+    overflow-y: auto;
+}
+
+.playlist-panel li {
+    padding: 10px;
+    margin-bottom: 6px;
+    background-color: #434f53;
+    border: 3px solid #000;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 12px;
+    font-weight: bold;
+}
+
+.playlist-panel li:hover, .playlist-panel li.cancion-activa {
+    background-color: #f07820;
+    color: black;
+}
+
+/* --- DISEÑO RESPONSIVO: GAMEBOY / BMO PREMIUM --- */
+@media (max-width: 768px) {
+    
+    .contenedor {
+        flex-direction: column !important;
+        gap: 20px;
+        padding: 25px 10px;
+        height: auto;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    /* Rediseño rígido del chasis estilo consola portátil */
+    .reproductor {
+        width: 100%;
+        max-width: 300px;   
+        height: 420px;      /* Espacio suficiente para que respiren los componentes */
+        padding: 22px 18px;
+        box-sizing: border-box;
+        border-radius: 26px;
+    }
+
+    /* Forzamos al borde interno a comportarse como un Grid de tres pisos independientes */
+    .borde-interno {
+        display: grid !important;
+        grid-template-columns: 1fr !important;
+        grid-template-rows: 125px 1fr auto !important; /* Piso 1: Ventana | Piso 2: Botones | Piso 3: Switch de Poder */
+        gap: 16px !important;
+        width: 100% !important;
+        height: 100% !important;
+        padding: 12px !important;
+        box-sizing: border-box;
+    }
+
+    /* PISO 1: La Pantalla (Sección Ventana del Cassette) */
+    .seccion-ventana {
+        grid-row: 1 !important;
+        width: 100% !important;
+        max-width: 245px;     
+        height: 120px !important; 
+        margin: 0 auto !important;
+    }
+
+    /* PISO 2: La Botonera Central */
+    .controles {
+        grid-row: 2 !important;
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;     
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 12px 10px !important;
+        padding: 10px 0 !important;
+        margin: auto 0 !important;
+    }
+
+    /* Ajuste de simetría para los botones mecánicos superiores */
+    .controles button:not(#btn-power) {
+        width: 66px !important;
+        height: 46px !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+    }
+
+    /* El botón de POWER se acopla perfectamente a la fila inferior de la botonera */
+    #btn-power {
+        width: 105px !important;
+        height: 46px !important;
+        margin: 0 !important;
+    }
+
+    /* PISO 3: El Interruptor de Encendido Inferior (Aislado de la botonera) */
+    /* Targeteamos específicamente la zona del indicador de energía */
+    .estado-power, 
+    .reproductor > .estado-power, 
+    .borde-interno > .estado-power {
+        grid-row: 3 !important; /* Lo anclamos al piso inferior del Grid */
+        display: flex !important;
+        flex-direction: row !important; /* ¡Obliga al switch y al LED a estar uno al lado del otro! */
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+        margin: 10px auto 0 auto !important;
+        padding: 0 !important;
+    }
+
+    /* Desvinculamos por completo el comportamiento del switch del comportamiento de los botones */
+    .estado-power button, 
+    .estado-power div {
+        display: inline-block !important;
+        transform: none !important;
+        position: static !important;
+    }
+
+    /* Lista de reproducción inferior */
+    #playlist-menu {
+        width: 100%;
+        max-width: 300px;
+        margin-top: 10px;
+    }
+}

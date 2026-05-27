@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PLAY/REC</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+
+    <div class="contenedor">
+        <div class="reproductor">
+            <div class="borde-interno">
+                
+                <div class="seccion-ventana">
+                    <div class="cristal">
+                        <div class="reflejo-cristal"></div>
+                        
+                        <div class="cassette">
+                            <div class="etiqueta-cassette">
+                                <div class="lineas-decorativas"></div>
+                                <div class="zona-carretes">
+                                    <div class="carrete" id="carrete-izq"></div>
+                                    <div class="espacio-medio"></div>
+                                    <div class="carrete" id="carrete-der"></div>
+                                </div>
+                                <div class="banda-roja"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="seccion-controles">
+                    <div class="fila-botones-top">
+                        <button id="btn-rewind" title="Rebobinar"><i class="fas fa-backward"></i></button>
+                        <button id="btn-shuffle" title="Aleatorio (Shuffle)"><i class="fas fa-random"></i></button>
+                        <button id="btn-playlist" title="Ver Cintas"><i class="fas fa-list"></i></button>
+                    </div>
+                    
+                    <div class="fila-botones-bottom">
+                        <button id="btn-stop" class="boton-power-gris" title="Encender / Apagar"><span class="texto-btn">POWER</span></button>
+                        <button id="btn-play-pause" title="Play/Pausa"><i class="fas fa-play"></i><i class="fas fa-pause" style="display:none;"></i></button>
+                    </div>
+
+                    <div class="detalles-decorativos">
+                        <div id="led-estado-power"></div>
+                        
+                        <div class="switch-retro">
+                            <div class="perilla-switch"></div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="playlist-panel" id="playlist-menu">
+            <h2>Mis Cassettes</h2>
+            <ul id="lista-canciones"></ul>
+        </div>
+    </div>
+
+    <audio id="reproductor-audio"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>
